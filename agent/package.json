@@ -1,0 +1,7 @@
+{
+  "name": "devx-paypercall-agent",
+  "private": true,
+  "type": "module",
+  "description": "Demo payer agent + Token Check fulfiller for DevX PayPerCall on Arc",
+  "dependencies": { "viem": "2.57.10" }
+}

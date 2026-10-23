@@ -1,0 +1,24 @@
+# never commit keys or local state
+secrets/
+**/secrets/
+keys.json
+*.key
+*.pem
+.env
+.env.*
+wallet.json
+credentials.json
+.arc-studio/
+# build output / deps
+node_modules/
+contracts/out/
+contracts/cache/
+contracts/lib/
+contracts/broadcast/
+contracts/deployments/fork.json
+receipts/
+studio/out/
+studio/workspace/
+dist/
+tools/
+*.log

@@ -1,0 +1,11 @@
+Build the web app (Vite, in src/) for DevX PayPerCall. Brand: "DevX PayPerCall", subtitle "Made by DevX". Clean dark UI, mobile friendly. One page:
+
+1. Network switch: Arc mainnet (chainId 5042, RPC https://rpc.mainnet.arc.io, explorer https://explorer.arc.io) and Arc testnet (5042002, https://rpc.testnet.arc.io, https://explorer.testnet.arc.io). Keep contract addresses in one config file: src/config.ts with `PAYPERCALL = { 5042: "0x0000000000000000000000000000000000000000" /* set after mainnet deploy */, 5042002: "<the testnet address you deployed>" }`. Show a clear "not deployed on this network yet" state for the zero address.
+2. Connect wallet (injected EIP-1193 such as MetaMask or Rabby; add/switch the Arc chain automatically). Show the USDC balance (ERC-20 at 0x3600000000000000000000000000000000000000, 6 decimals).
+3. Service card for service #0, read live from getService(0): name, price in USDC, timeout, referrer split.
+4. "Check a token" form: chain select (base, ethereum, arbitrum, optimism, polygon, bsc) and token address. Button "Pay 0.01 USDC & check". Flow: approve the exact price if the allowance is short, then requestCall(0, "<chain>:<address>", REFERRER, price). REFERRER = 0xe30c4544eC57ac44d8586eB49e49e267fc2d40DB (DevX app treasury; set in config).
+5. Live status: poll getCall(callId) every 2 s. Show Open (with a countdown to the deadline), then Fulfilled or Refunded. On Fulfilled, read the CallFulfilled event for resultURI, fetch the verdict JSON from https://tokencheck.madebydevx.com/v1/token/free?chain=..&address=.. (CORS is open), show grade + summary, and show "hash matches onchain ✓" if keccak256(body) equals resultHash (it may differ if the API data changed since; then show "result changed since settlement").
+6. Receipt panel: request tx, settle tx, amounts to provider and referrer, all linked to the explorer.
+7. "Recent calls" table from CallRequested / CallFulfilled / CallRefunded logs (query ≤ 9,999 blocks per eth_getLogs request; Arc limits ranges to 10k).
+8. Footer: how it works in 3 lines (escrow → verdict → split/refund), and links: contract on the explorer, GitHub repo, tokencheck.madebydevx.com.
+Use viem. No backend. Make sure it builds (npm run build) and test it against the testnet deployment in the preview.

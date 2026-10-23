@@ -1,0 +1,10 @@
+Build "DevX PayPerCall" on Arc: escrowed USDC pay-per-call for AI agents and paid APIs.
+
+Read context/SPEC.md first. It is the full spec and the exact interface. context/PayPerCall.t.sol and context/MockUSDC.sol are our reference Foundry test suite and an EIP-3009 USDC mock; your contract must compile against them and pass them unchanged.
+
+Please:
+1. Write contracts/PayPerCall.sol (solidity ^0.8.30, no external deps besides what Foundry gives you) implementing SPEC.md exactly: services, escrowed calls, fulfill with a provider/referrer split, reject refunds, refundExpired after the deadline, and the gasless EIP-3009 requestCallWithAuthorization path whose nonce must equal authNonce(...).
+2. Add the reference tests and mock into the Foundry test folder and make them pass. Then write additional tests of your own: invariant/fuzz escrow conservation, a reentrancy attempt via a malicious token, deadline edge cases (exactly at the deadline), and an EIP-3009 signature with a wrong nonce or wrong payer.
+3. Run a full security review of the contract (max preset: audit + tests) and fix anything real. Keep it ownerless and non-upgradeable.
+4. Report the forge test summary (count passed/failed) and any findings.
+Do not deploy yet.
