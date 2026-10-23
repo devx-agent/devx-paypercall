@@ -1,0 +1,16 @@
+{
+ "network": "mainnet",
+ "chainId": 5042,
+ "PayPerCall": "0x21b9fad1c5eac36c687479d6bc8c8b088cbae9d1",
+ "deployTx": "0x2f2abd83c346c0499b6a44d605d8701ab2f1eeda4e3ddb8310cb45359970ba53",
+ "deployBlock": 27529228,
+ "serviceId": 0,
+ "ops": "0xbDdd5BB708D9368ce3373d083aA1e7D2c5D14d57",
+ "agent": "0x6b4E1810aB3FAA91E1b1E775CEdae082dF4bF67d",
+ "usdc": "0x3600000000000000000000000000000000000000",
+ "txs": [
+  "0x2f2abd83c346c0499b6a44d605d8701ab2f1eeda4e3ddb8310cb45359970ba53",
+  "0xbaa744f14261c3d3d17cb761ad8961bb95e1945c8a9d55e03decdd64522c94e6"
+ ],
+ "explorer": "https://explorer.arc.io/address/0x21b9fad1c5eac36c687479d6bc8c8b088cbae9d1"
+}

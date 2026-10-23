@@ -21,10 +21,17 @@ case "$NET" in
            # 5 test USDC each (native balance, 18 decimals; the ERC-20 view at 0x3600… mirrors it)
            arc-cast rpc anvil_setBalance "$OPS_ADDR" 0x4563918244F40000 -r $RPC >/dev/null
            arc-cast rpc anvil_setBalance "$AGENT_ADDR" 0x4563918244F40000 -r $RPC >/dev/null ;;
+  mainfork) RPC=http://127.0.0.1:8549; CHAIN=5042
+           if ! arc-cast chain-id -r $RPC >/dev/null 2>&1; then
+             (nohup arc-anvil --network arc --fork-url https://rpc.mainnet.arc.io --port 8549 --silent >/tmp/arcanvil_main.log 2>&1 &)
+             for i in $(seq 1 30); do arc-cast chain-id -r $RPC >/dev/null 2>&1 && break; sleep 1; done
+           fi
+           # fork keeps the REAL mainnet balances (ops has the bridged 1.98 USDC); only the agent gets fake fork USDC
+           arc-cast rpc anvil_setBalance "$AGENT_ADDR" 0x4563918244F40000 -r $RPC >/dev/null ;;
   testnet) RPC=https://rpc.testnet.arc.io; CHAIN=5042002 ;;
   mainnet) RPC=https://rpc.mainnet.arc.io; CHAIN=5042
            [ "${CONFIRM_MAINNET:-}" = "I_APPROVE_REAL_USDC" ] || { echo "Refusing: mainnet spends real USDC. Set CONFIRM_MAINNET=I_APPROVE_REAL_USDC after Muhammad approves."; exit 2; } ;;
-  *) echo "usage: $0 fork|testnet|mainnet"; exit 1 ;;
+  *) echo "usage: $0 fork|mainfork|testnet|mainnet"; exit 1 ;;
 esac
 [ "$(arc-cast chain-id -r $RPC)" = "$CHAIN" ] || { echo "chain id mismatch on $RPC"; exit 1; }
 BAL=$(arc-cast call 0x3600000000000000000000000000000000000000 "balanceOf(address)(uint256)" "$OPS_ADDR" -r $RPC | awk '{print $1}')
@@ -53,7 +60,7 @@ exp={"5042":"https://explorer.arc.io","5042002":"https://explorer.testnet.arc.io
 out={"network":net,"chainId":int(chain),"PayPerCall":addr,"deployTx":h,"deployBlock":blk,"serviceId":0,
      "ops":ops,"agent":agent,"usdc":"0x3600000000000000000000000000000000000000",
      "txs":[t["hash"] for t in d["transactions"]],
-     "explorer": (f"{exp}/address/{addr}" if exp and net!="fork" else None)}
+     "explorer": (f"{exp}/address/{addr}" if exp and "fork" not in net else None)}
 json.dump(out,open(f"deployments/{net}.json","w"),indent=1)
 print(json.dumps(out,indent=1))
 PY

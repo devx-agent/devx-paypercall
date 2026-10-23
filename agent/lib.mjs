@@ -9,6 +9,7 @@ const NETS = {
   mainnet: { id: 5042, rpc: 'https://rpc.mainnet.arc.io', explorer: 'https://explorer.arc.io' },
   testnet: { id: 5042002, rpc: 'https://rpc.testnet.arc.io', explorer: 'https://explorer.testnet.arc.io' },
   fork: { id: 5042002, rpc: 'http://127.0.0.1:8547', explorer: null },
+  mainfork: { id: 5042, rpc: 'http://127.0.0.1:8549', explorer: null },
 };
 
 export function arg(name, def) {

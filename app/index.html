@@ -1,29 +1,21 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DevX PayPerCall: escrowed USDC pay-per-call for AI agents on Arc</title>
-<meta name="description" content="Pay $0.01 USDC per API call. Get a verified answer or an automatic refund, on Arc. Made by DevX.">
-<style>
-:root{--bg:#0b0d12;--card:#141824;--fg:#e8ecf4;--mut:#9aa3b5;--acc:#4f8cff;--ok:#3ccf8e}
-*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
-main{max-width:860px;margin:0 auto;padding:48px 20px}h1{font-size:2.2rem;margin:.2em 0}.tag{color:var(--mut);font-size:1.1rem}
-.pill{display:inline-block;padding:3px 10px;border-radius:99px;background:#1d2433;color:var(--acc);font-size:.8rem;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:28px 0}
-.card{background:var(--card);border:1px solid #222a3a;border-radius:14px;padding:18px}.card h3{margin:.1em 0 .4em;font-size:1rem}
-.card p{margin:0;color:var(--mut);font-size:.93rem}code{background:#1d2433;padding:1px 6px;border-radius:6px;font-size:.88em}
-a{color:var(--acc)}footer{color:var(--mut);font-size:.85rem;margin-top:40px;border-top:1px solid #222a3a;padding-top:16px}
-.status{border-left:3px solid var(--ok);padding:10px 14px;background:#10201a;border-radius:8px;color:#bfeedd}
-</style></head><body><main>
-<span class="pill">Arc · USDC · Agents</span>
-<h1>DevX PayPerCall</h1>
-<p class="tag">Escrowed USDC pay-per-call for AI agents. Pay $0.01, get a verified answer or an automatic refund, on Arc.</p>
-<p class="status">Status: in development. The contract and app are being built in Arc Studio and tested on Arc testnet. This page will become the live app.</p>
-<div class="grid">
-<div class="card"><h3>1 · Escrow</h3><p>An agent locks the exact price of one call in USDC with <code>requestCall</code>, or gaslessly with an EIP-3009 signature.</p></div>
-<div class="card"><h3>2 · Verdict</h3><p>The provider's bot answers off-chain and settles onchain with <code>keccak256</code> of the exact response, so the answer stays provable.</p></div>
-<div class="card"><h3>3 · Split or refund</h3><p>Payment splits provider / referrer (90 / 10). If the call is rejected or the deadline passes, the agent gets a full refund.</p></div>
-</div>
-<h2>Service #0: DevX Token Check</h2>
-<p>Send <code>base:0xTOKEN</code> with 0.01 USDC and get a graded token-safety verdict (honeypot, tax, ownership, liquidity) within seconds, or your USDC back.
-Try the free checker now at <a href="https://tokencheck.madebydevx.com/">tokencheck.madebydevx.com</a>.</p>
-<footer>Made by DevX · <a href="https://github.com/devx-agent/devx-paypercall">GitHub</a> · <a href="https://tokencheck.madebydevx.com/">DevX Token Check</a> · Built with Arc Studio on <a href="https://arc.io">Arc</a></footer>
-</main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Arc Studio by Circle — https://studio.arc.io" />
+    <meta name="description" content="Escrowed USDC pay-per-call for AI agents and paid APIs on Arc." />
+    <title>DevX PayPerCall</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <!-- Built with Arc Studio — https://studio.arc.io -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

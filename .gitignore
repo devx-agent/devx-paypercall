@@ -16,9 +16,14 @@ contracts/cache/
 contracts/lib/
 contracts/broadcast/
 contracts/deployments/fork.json
-receipts/
+receipts/*
+!receipts/mainnet/
 studio/out/
 studio/workspace/
 dist/
 tools/
 *.log
+app/lib/
+app/contracts/out/
+app/contracts/cache/
+app/contracts/broadcast/

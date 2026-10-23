@@ -2,11 +2,27 @@
 
 **Escrowed USDC pay-per-call for AI agents on [Arc](https://arc.io).** Pay $0.01, get a verified answer or an automatic refund.
 
-Live page: https://paypercall.madebydevx.com (placeholder until the Arc Studio app ships) · Service #0: [DevX Token Check](https://tokencheck.madebydevx.com)
+**Live app:** https://paypercall.madebydevx.com · **Arc Studio project:** https://studio.arc.io/app/e0f3376e-8287-4dba-bda9-9f13ef987c29 · Service #0: [DevX Token Check](https://tokencheck.madebydevx.com)
 
-> **The shipped contract and app are the ones written by [Arc Studio](https://studio.arc.io).** This repo holds the spec, the acceptance test
-> suite, the off-chain agent/fulfiller scripts, and the deploy tooling. Studio's contract lands in `contracts/src/` and its Vite app in `app/`
-> once the Studio build is pulled. We wrote the spec and tests; Arc Studio writes, tests, audits and testnet-deploys the contract and builds the app.
+## Live on Arc mainnet
+| | |
+|---|---|
+| PayPerCall contract (chain 5042) | [`0x21b9fad1c5eac36c687479d6bc8c8b088cbae9d1`](https://explorer.arc.io/address/0x21b9fad1c5eac36c687479d6bc8c8b088cbae9d1) |
+| Deploy tx | [`0x2f2abd83…70ba53`](https://explorer.arc.io/tx/0x2f2abd83c346c0499b6a44d605d8701ab2f1eeda4e3ddb8310cb45359970ba53) (block 27529228) |
+| Register service #0 (DevX Token Check, $0.01, 10% referrer) | [`0xbaa744f1…c94e6`](https://explorer.arc.io/tx/0xbaa744f14261c3d3d17cb761ad8961bb95e1945c8a9d55e03decdd64522c94e6) |
+| First paid call #0: agent escrows $0.01 | [`0x733de8b2…ab705d`](https://explorer.arc.io/tx/0x733de8b23a826f4a759e540c5052d82451d879c4d897b6aa7fc1cd1372ab705d) |
+| Bot settles call #0 (verdict hash on-chain, 0.009 provider / 0.001 referrer) | [`0x6b2b1aa5…f79bfc`](https://explorer.arc.io/tx/0x6b2b1aa5f77ba1d0aa6ee89bba5d2d40379900832896285c86be6bbacdf79bfc) |
+| Testnet deployment (by Arc Studio, chain 5042002) | [`0x9351a733…c217bd`](https://explorer.testnet.arc.io/address/0x9351a7332944a24e1e179cf7a891a89d67c217bd) |
+
+The verdict body for call #0 is in [`receipts/mainnet/call-0.json`](receipts/mainnet/call-0.json): `keccak256` of that file equals the
+`resultHash` stored on-chain (`0x6c734793…5bed68`). Before mainnet, the full flow (deploy, register, approve and EIP-3009 pays, settle with the
+90/10 split, reject refund, `refundExpired` after the deadline) ran on an `arc-anvil` fork of Arc mainnet with the same contract.
+
+> **The shipped contract and app were written by [Arc Studio](https://studio.arc.io).** `contracts/src/PayPerCall.sol` is Studio's contract,
+> byte-for-byte the source Studio wrote, audited and deployed to testnet, and it is the source deployed on mainnet (compiled with Studio's settings: solc 0.8.30,
+> via-IR, 200 runs, cancun; the runtime bytecode matches Studio's build, metadata hash aside). `app/` is Studio's full project (React/Vite app, its
+> own contract copy, 33 tests and Create2 scripts). We wrote the spec, the prompts, the 18 acceptance tests (they pass against Studio's contract), and
+> the off-chain agent/fulfiller and deploy tooling.
 
 ## How it works
 1. **Escrow.** An agent locks the exact price of one call: `requestCall(serviceId, "base:0xTOKEN", referrer, maxPrice)` (approve), or gaslessly via
@@ -20,10 +36,13 @@ Live page: https://paypercall.madebydevx.com (placeholder until the Arc Studio a
 | Path | |
 |---|---|
 | `studio/SPEC.md`, `studio/prompt1-4*.txt`, `studio/run_studio.sh` | What we hand Arc Studio (spec + 4 turns), driven via `@circle-fin/arc-studio-cli` |
+| `contracts/src/PayPerCall.sol` | The deployed contract (written by Arc Studio) |
 | `contracts/test/` | 18 Foundry tests + EIP-3009 MockUSDC (fuzz escrow conservation, split, refund paths, replay/re-pointing, blocklist recovery) |
-| `contracts/script/Deploy.s.sol`, `scripts/deploy.sh` | Deploy + register service #0 (`fork` / `testnet` / `mainnet`, mainnet gated by an explicit confirm env) |
+| `contracts/script/Deploy.s.sol`, `scripts/deploy.sh` | Deploy + register service #0 (`fork` / `mainfork` / `testnet` / `mainnet`, mainnet gated by an explicit confirm env) |
 | `agent/` | `pay.mjs` (demo AI agent payer), `fulfiller.mjs` (provider bot), `fund_agent.mjs`, `bridge_base_to_arc.mjs` (CCTP V2 + Forwarding Service) |
-| `app/` | Placeholder page; replaced by the Arc Studio app |
+| `app/` | Arc Studio's project: the live React/Vite app (`app/src`) plus Studio's contract tests. Our only edits: the mainnet address and deploy blocks in `src/config.ts`, Arc Mainnet as the default chain, and log scans chunked from the deploy block (`src/lib/logs.ts`) |
+| `deployments/`, `receipts/mainnet/` | Mainnet deployment record and the verdict body of paid call #0 |
+| `scripts/make_app_deploy.py` | Packs `app/dist` into the Cloudflare Worker serving paypercall.madebydevx.com |
 | `docs/` | Project rationale and demo plan |
 
 ## Arc details we rely on
@@ -34,6 +53,8 @@ Chain 5042 (mainnet) / 5042002 (testnet). USDC ERC-20 interface `0x3600000000000
 ```bash
 cd agent && npm ci
 scripts/rehearse_fork.sh          # free end-to-end on an arc-anvil fork of Arc testnet
+scripts/deploy.sh mainfork        # same contract on a local fork of Arc mainnet
+cd app && npm install --legacy-peer-deps --ignore-scripts && npx vite build   # the app (Studio uses bun)
 ```
 Keys are read from a local secrets file outside the repo and are never committed or printed.
 
