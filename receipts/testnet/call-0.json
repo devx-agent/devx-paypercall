@@ -1,0 +1,467 @@
+{
+  "operation_id": null,
+  "status": "free",
+  "status_url": null,
+  "result": {
+    "grade": "BASED",
+    "one_liner": "Known major asset, no surprises",
+    "roast": "$USDC: known major asset (USDC (Circle)). Buy and sell simulate cleanly. Issuer controls (freeze/upgrade/mint) exist by design.",
+    "metrics": {
+      "tokenAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "ticker": "USDC",
+      "tokenName": "USD Coin",
+      "fetchedAt": "2026-10-23T23:14:34.521Z",
+      "metrics": [
+        {
+          "key": "liquidity_usd",
+          "label": "Liquidity",
+          "availability": "available",
+          "value": "272735403",
+          "unit": "USD",
+          "provenance": {
+            "source": "derived",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "price_usd",
+          "label": "Price (simulated buy)",
+          "availability": "available",
+          "value": "1.002",
+          "unit": "USD",
+          "provenance": {
+            "source": "derived",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "fdv_usd",
+          "label": "Fully diluted value",
+          "availability": "available",
+          "value": "4297842553",
+          "unit": "USD",
+          "provenance": {
+            "source": "derived",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "pools",
+          "label": "Pools with liquidity",
+          "availability": "available",
+          "value": "16",
+          "unit": "count",
+          "provenance": {
+            "source": "onchain",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "buy_tax_pct",
+          "label": "Buy tax (simulated)",
+          "availability": "available",
+          "value": "0",
+          "unit": "%",
+          "provenance": {
+            "source": "derived",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "sell_tax_pct",
+          "label": "Sell tax (simulated)",
+          "availability": "available",
+          "value": "0",
+          "unit": "%",
+          "provenance": {
+            "source": "derived",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "owner_supply_pct",
+          "label": "Owner holding",
+          "availability": "available",
+          "value": "0",
+          "unit": "%",
+          "provenance": {
+            "source": "onchain",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "creator_supply_pct",
+          "label": "Creator holding",
+          "availability": "available",
+          "value": "0",
+          "unit": "%",
+          "provenance": {
+            "source": "onchain",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "burned_supply_pct",
+          "label": "Burned supply",
+          "availability": "available",
+          "value": "0.0006",
+          "unit": "%",
+          "provenance": {
+            "source": "onchain",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "contract_age_days",
+          "label": "Contract age",
+          "availability": "available",
+          "value": "1162.19",
+          "unit": "days",
+          "provenance": {
+            "source": "onchain",
+            "observedAt": "2026-10-23T23:14:34.521Z",
+            "blockNumber": "53003963"
+          },
+          "unavailableReason": null
+        },
+        {
+          "key": "volume_24h_usd",
+          "label": "Volume 24h",
+          "availability": "unavailable",
+          "value": null,
+          "unit": "USD",
+          "provenance": null,
+          "unavailableReason": "not_reported"
+        }
+      ]
+    },
+    "generatedAt": "2026-10-23T23:14:34.521Z",
+    "fromCache": false,
+    "disclaimer": "Not financial advice.",
+    "verdict": "safe",
+    "risk_score": 0,
+    "confidence": 0.95,
+    "reasons": [
+      {
+        "severity": "info",
+        "code": "blacklist",
+        "message": "Blacklist/bot-list functions present: an active owner can block holders from selling (expected for this known asset: issuer controls by design)"
+      },
+      {
+        "severity": "info",
+        "code": "upgradeable",
+        "message": "Upgradeable proxy: logic can be replaced (implementation 0x2ce6311ddae708829bc0784c967b7d77d19fd779) (expected for this known asset: issuer controls by design)"
+      },
+      {
+        "severity": "info",
+        "code": "mintable",
+        "message": "Mint function present and owner active: supply can be inflated (expected for this known asset: issuer controls by design)"
+      },
+      {
+        "severity": "info",
+        "code": "pausable",
+        "message": "Transfers can be paused by a privileged account (expected for this known asset: issuer controls by design)"
+      },
+      {
+        "severity": "info",
+        "code": "active_owner",
+        "message": "Active owner 0x3abd6f64a422225e61e435bae41db12096106df7 (an externally owned wallet)"
+      },
+      {
+        "severity": "info",
+        "code": "sim_ok",
+        "message": "Simulated buy, transfer and sell on uniswap_v3 succeeded with no token tax"
+      },
+      {
+        "severity": "info",
+        "code": "known_asset",
+        "message": "Known major asset: USDC (Circle)"
+      }
+    ],
+    "chain": "base",
+    "chain_id": 8453,
+    "token": {
+      "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6,
+      "total_supply_raw": "4289994423690236",
+      "total_supply": 4289994423.690236,
+      "price_usd": 1.002,
+      "fdv_usd": 4297842553,
+      "known_asset": "USDC (Circle)"
+    },
+    "contract": {
+      "verified_sourcify": true,
+      "sourcify_match": "exact_match",
+      "bytecode_bytes": 1852,
+      "owner": "0x3abd6f64a422225e61e435bae41db12096106df7",
+      "owner_is_contract": false,
+      "ownership_renounced": false,
+      "paused": false,
+      "proxy": {
+        "upgradeable": true,
+        "implementation": "0x2ce6311ddae708829bc0784c967b7d77d19fd779",
+        "implementation_verified_sourcify": true,
+        "admin": null,
+        "admin_is_contract": null,
+        "beacon": null,
+        "minimal_proxy": false
+      }
+    },
+    "flags": {
+      "honeypot": false,
+      "mintable": true,
+      "blacklist": true,
+      "pausable": true,
+      "fee_setter": false,
+      "fee_on_transfer": false,
+      "trading_switch": false,
+      "max_tx_or_wallet": false,
+      "upgradeable": true,
+      "ownership_reclaim": false
+    },
+    "privileged_functions": {
+      "mint": [
+        "mint(address,uint256)"
+      ],
+      "blacklist": [
+        "blacklist(address)",
+        "isBlacklisted(address)"
+      ],
+      "pause": [
+        "pause()",
+        "unpause()",
+        "paused()"
+      ],
+      "ownership": [
+        "owner()",
+        "transferOwnership(address)"
+      ],
+      "upgrade": [
+        "upgradeTo(address)",
+        "upgradeToAndCall(address,bytes)"
+      ]
+    },
+    "honeypot": {
+      "performed": true,
+      "method": "eth_simulateV1",
+      "pool": "0x6c561b446416e1a00e8e93e221854d6ea4171372",
+      "dex": "uniswap_v3",
+      "quote": "WETH",
+      "amount_in": "10000000000000000",
+      "amount_in_human": 0.01,
+      "buy_ok": true,
+      "transfer_ok": true,
+      "sell_ok": true,
+      "buy_tax_pct": 0,
+      "transfer_tax_pct": 0,
+      "sell_tax_pct": 0,
+      "round_trip_loss_pct": 0.599,
+      "tokens_received_raw": "23558988",
+      "buy_gas": 105488,
+      "sell_gas": 87916,
+      "failed_stage": null,
+      "revert_reason": null,
+      "second_pool": {
+        "pool": "0xd0b53d9277642d899df5c87a3966a349a798f224",
+        "dex": "uniswap_v3",
+        "buy_ok": true,
+        "sell_ok": true,
+        "buy_tax_pct": 0,
+        "sell_tax_pct": 0
+      }
+    },
+    "liquidity": {
+      "total_usd": 272735403,
+      "pools_found": 16,
+      "dexes_checked": [
+        "uniswap_v2",
+        "uniswap_v3",
+        "aerodrome",
+        "aerodrome_slipstream",
+        "pancakeswap_v3",
+        "sushiswap_v2"
+      ],
+      "quote_assets": [
+        "WETH",
+        "USDC"
+      ],
+      "top_pools": [
+        {
+          "address": "0x6c561b446416e1a00e8e93e221854d6ea4171372",
+          "dex": "uniswap_v3",
+          "fee": 3000,
+          "quote": "WETH",
+          "liquidity_usd": 235661227
+        },
+        {
+          "address": "0xd0b53d9277642d899df5c87a3966a349a798f224",
+          "dex": "uniswap_v3",
+          "fee": 500,
+          "quote": "WETH",
+          "liquidity_usd": 12864177
+        },
+        {
+          "address": "0xb2cc224c1c9fee385f8ad6a55b4d94e92359dc59",
+          "dex": "aerodrome_slipstream",
+          "fee": "ts100",
+          "quote": "WETH",
+          "liquidity_usd": 8566228
+        },
+        {
+          "address": "0x72ab388e2e2f6facef59e3c3fa2c4e29011c2d38",
+          "dex": "pancakeswap_v3",
+          "fee": 100,
+          "quote": "WETH",
+          "liquidity_usd": 7120291
+        },
+        {
+          "address": "0xcdac0d6c6c59727a65f871236188350531885c43",
+          "dex": "aerodrome",
+          "fee": "volatile",
+          "quote": "WETH",
+          "liquidity_usd": 4187820
+        }
+      ],
+      "supply_in_pools_pct": 1.0632,
+      "method": "approx: 2 x quote-side pool balance x Chainlink price. Uniswap v4 and DEXs not listed are not covered.",
+      "top_v2_lp": null
+    },
+    "holders": {
+      "owner_pct": 0,
+      "creator_pct": 0,
+      "burned_pct": 0.0006,
+      "token_contract_pct": 0,
+      "in_pools_pct": 1.0632,
+      "top_holders": null,
+      "top_holders_note": "a full top-holder list needs an indexer; not included (free public sources only)"
+    },
+    "deployer": {
+      "creator": "0x6aaff8af0ae8017725312c388ba3745dfe91185b",
+      "creator_tx_count": 11,
+      "created_via": null,
+      "creation_block": 2797221,
+      "creation_tx": "0x8aa214f98bcf2984add809d10232135cccc4d6ab97d8477e66475d8bf68def34",
+      "created_at": "2023-08-18T18:36:29.000Z",
+      "contract_age_days": 1162.19,
+      "source": "sourcify"
+    },
+    "checks": {
+      "bytecode_scan": true,
+      "ownership": true,
+      "proxy": true,
+      "honeypot_simulation": true,
+      "liquidity": true,
+      "source_verification": true,
+      "creation": true,
+      "holder_balances": true,
+      "lp_burn": false
+    },
+    "block_number": 53003963,
+    "elapsed_ms": 209,
+    "rpc_calls": 18,
+    "sources": [
+      "public JSON-RPC (Base)",
+      "Multicall3",
+      "eth_simulateV1 / eth_call state-override trade simulation",
+      "Chainlink price feed",
+      "Sourcify"
+    ],
+    "notice": "Informational only, not financial advice. Automated on-chain heuristics and a simulated trade; they can miss risks and can flag safe tokens."
+  },
+  "payment": null,
+  "free_tier": {
+    "limit": 10,
+    "remaining": null,
+    "note": "demo token: free, full result and not counted",
+    "result": "full (demo token)",
+    "then": "x402: $0.01 USDC on Base per check at https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913 (this endpoint also returns the x402 quote once the free checks are used)"
+  },
+  "upgrade": {
+    "message": "Full report for $0.01: repeat this request with an x402 payment (PAYMENT-SIGNATURE or X-PAYMENT) here or at https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.",
+    "value": "One $0.01 call before a swap: a simulated buy, transfer and sell against the token's own pool with taxes, privileged functions, holders and liquidity, summarized as safe/caution/danger with reasons. Failed or empty checks are never charged.",
+    "offer": {
+      "price_usd": "0.01",
+      "amount_atomic": "10000",
+      "asset": "USDC on Base (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913)",
+      "pay_to": "0xe30c4544eC57ac44d8586eB49e49e267fc2d40DB",
+      "gasless": "You sign an EIP-3009 USDC authorization; the Coinbase CDP facilitator submits it. The wallet needs 0.01 USDC on Base and no ETH.",
+      "charged_only_on_success": true,
+      "paid_adds": [
+        "buy, sell and transfer tax % from the simulated trade, plus pool, gas and revert reason",
+        "every reason (the free tier shows the top 3)",
+        "privileged functions found in the bytecode (mint, blacklist, pause, fee setters, ownership)",
+        "holder concentration (owner, creator, burned, in-pool %) and deployer (creator, creation tx, tx count)",
+        "liquidity per pool and DEX, Sourcify verification detail, checks run and data sources",
+        "AX1-compatible envelope (roast, metrics), a 7-day receipt (status_url), a share page and card image",
+        "idempotent recovery: replay the same signed request or requestKey and get the stored verdict with no second charge"
+      ],
+      "comparison": "AX1 Verdict (ax1.vc) quotes $0.02 per call in its live x402 402 (checked 2026-10-23); DevX Token Check is $0.01 and accepts the same request body."
+    },
+    "next_steps": [
+      {
+        "action": "pay_per_call",
+        "method": "GET",
+        "url": "https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "price_usd": "0.01",
+        "how": "Sign the PAYMENT-REQUIRED header (x402 v2, eip155:8453) or accepts[0] in this body (x402 v1, network \"base\") and repeat this exact request with PAYMENT-SIGNATURE (v2) or X-PAYMENT (v1). Any stock x402 client does this automatically; see snippets."
+      },
+      {
+        "action": "see_full_example_free",
+        "method": "GET",
+        "url": "https://tokencheck.madebydevx.com/v1/token/demo?address=0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+        "note": "full paid-format result for 4 demo tokens (USDC, WETH, DEGEN, AERO on Base), free"
+      },
+      {
+        "action": "read_docs",
+        "url": "https://tokencheck.madebydevx.com/llms.txt",
+        "openapi": "https://tokencheck.madebydevx.com/openapi.json"
+      },
+      {
+        "action": "subscribe_updates",
+        "method": "POST",
+        "url": "https://tokencheck.madebydevx.com/v1/updates/subscribe",
+        "body": {
+          "contact": "you@example.com or https://your-host/webhook"
+        },
+        "note": "optional and opt-in: we store only what you send, use it only for Token Check API/price change notices, and you can delete it with the returned token"
+      }
+    ],
+    "snippets": {
+      "@x402/fetch (Node, x402 v2)": "import { wrapFetchWithPayment, x402Client } from \"@x402/fetch\"; import { registerExactEvmScheme } from \"@x402/evm/exact/client\"; import { privateKeyToAccount } from \"viem/accounts\"; const c = new x402Client(); registerExactEvmScheme(c, { signer: privateKeyToAccount(process.env.EVM_PRIVATE_KEY) }); const r = await wrapFetchWithPayment(fetch, c)(\"https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\"); console.log((await r.json()).result.verdict);",
+      "x402-fetch (Node, x402 v1)": "import { wrapFetchWithPayment } from \"x402-fetch\"; import { privateKeyToAccount } from \"viem/accounts\"; const r = await wrapFetchWithPayment(fetch, privateKeyToAccount(process.env.EVM_PRIVATE_KEY))(\"https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\"); console.log((await r.json()).result.verdict);",
+      "python x402 (v2)": "from x402 import x402ClientSync; from x402.http.clients import x402_requests; from x402.mechanisms.evm.exact.register import register_exact_evm_client; from x402.mechanisms.evm.signers import EthAccountSigner; from eth_account import Account; c = x402ClientSync(); register_exact_evm_client(c, EthAccountSigner(Account.from_key(KEY))); print(x402_requests(c).get(\"https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\").json()[\"result\"][\"verdict\"])",
+      "python x402 v1 / AgentKit (x402<2)": "from x402.clients.requests import x402_requests; from eth_account import Account; print(x402_requests(Account.from_key(KEY)).get(\"https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\").json()[\"result\"][\"verdict\"])",
+      "AgentKit / ElizaOS plugins": "npm install agentkit-devx-tokencheck  |  npm install elizaos-plugin-devx-tokencheck",
+      "MCP (remote, tool token_safety_check)": "{ \"mcpServers\": { \"devx\": { \"url\": \"https://agents.madebydevx.com/mcp\" } } }",
+      "AgentCash CLI": "npx agentcash@latest fetch \"https://tokencheck.madebydevx.com/v1/token/verdict?chain=base&address=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\""
+    },
+    "docs": {
+      "llms": "https://tokencheck.madebydevx.com/llms.txt",
+      "openapi": "https://tokencheck.madebydevx.com/openapi.json",
+      "agents": "https://tokencheck.madebydevx.com/agents.md",
+      "x402": "https://tokencheck.madebydevx.com/.well-known/x402",
+      "mcp": "https://agents.madebydevx.com/mcp",
+      "web": "https://tokencheck.madebydevx.com/"
+    }
+  }
+}

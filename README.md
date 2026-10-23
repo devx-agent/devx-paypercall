@@ -14,9 +14,17 @@
 | Bot settles call #0 (verdict hash on-chain, 0.009 provider / 0.001 referrer) | [`0x6b2b1aa5…f79bfc`](https://explorer.arc.io/tx/0x6b2b1aa5f77ba1d0aa6ee89bba5d2d40379900832896285c86be6bbacdf79bfc) |
 | Testnet deployment (by Arc Studio, chain 5042002) | [`0x9351a733…c217bd`](https://explorer.testnet.arc.io/address/0x9351a7332944a24e1e179cf7a891a89d67c217bd) |
 
+**Testnet end-to-end (Arc testnet, Studio's own deployment 0x9351…c217bd), 2026-10-24:**
+- register https://explorer.testnet.arc.io/tx/0x0eb958eb26e06c2aa38ed5fe94a189ad5d793d7639983b13f7da98b44f1cc170
+- approve pay https://explorer.testnet.arc.io/tx/0x177056f3aeeb5ebf2c2e8f76430070d6de9cf48b370c45ef99eb52b728d23f3c → settle https://explorer.testnet.arc.io/tx/0x34797c241b3588396b587b07559a267193b4b1d4f54d45e2d28e6e4d05285f8f
+- gasless EIP-3009 pay https://explorer.testnet.arc.io/tx/0x86e81c41a0d7956c6e314ae743aff391f6e11b1aafb3436b87d45f3251673343 → settle https://explorer.testnet.arc.io/tx/0x44c5c5dd548bfb62296e56c4746e266e05fc84803398669ac37ce16258229dd6
+- bad token → reject refund https://explorer.testnet.arc.io/tx/0x753931225f405146b8ccaae118d943a775a33e73a8b86a3ee423a342f3388920
+- missed deadline → refundExpired https://explorer.testnet.arc.io/tx/0xd8d7a6a18550a35d8884a2d6f8949af694eaa62e1a7c5b1854c0b8c968a6f37f
+
+
 The verdict body for call #0 is in [`receipts/mainnet/call-0.json`](receipts/mainnet/call-0.json): `keccak256` of that file equals the
-`resultHash` stored on-chain (`0x6c734793…5bed68`). Before mainnet, the full flow (deploy, register, approve and EIP-3009 pays, settle with the
-90/10 split, reject refund, `refundExpired` after the deadline) ran on an `arc-anvil` fork of Arc mainnet with the same contract.
+`resultHash` stored on-chain (`0x6c734793…5bed68`). The full flow (register, approve and EIP-3009 pays, settle with the 90/10 split, reject refund, `refundExpired` after the deadline) also ran
+on Arc testnet (above) and on an `arc-anvil` fork of Arc mainnet with the same contract.
 
 > **The shipped contract and app were written by [Arc Studio](https://studio.arc.io).** `contracts/src/PayPerCall.sol` is Studio's contract,
 > byte-for-byte the source Studio wrote, audited and deployed to testnet, and it is the source deployed on mainnet (compiled with Studio's settings: solc 0.8.30,

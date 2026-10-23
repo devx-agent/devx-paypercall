@@ -1,0 +1,37 @@
+{
+ "network": "testnet",
+ "chainId": 5042002,
+ "PayPerCall": "0x9351a7332944a24e1e179cf7a891a89d67c217bd",
+ "deployTx": "0x2684e1693a91312b7078a263cf3d7720cb2a721f6c65aeb7713444641fd8f48e",
+ "deployBlock": 68761822,
+ "deployedBy": "Arc Studio",
+ "serviceId": 0,
+ "ops": "0xbDdd5BB708D9368ce3373d083aA1e7D2c5D14d57",
+ "agent": "0x6b4E1810aB3FAA91E1b1E775CEdae082dF4bF67d",
+ "usdc": "0x3600000000000000000000000000000000000000",
+ "txs": [
+  "0x0eb958eb26e06c2aa38ed5fe94a189ad5d793d7639983b13f7da98b44f1cc170",
+  "0xe03f7c47715ae588e4bc8bf980f9ce691178a552920ae3612bbadd649090a5e2",
+  "0x177056f3aeeb5ebf2c2e8f76430070d6de9cf48b370c45ef99eb52b728d23f3c",
+  "0x86e81c41a0d7956c6e314ae743aff391f6e11b1aafb3436b87d45f3251673343",
+  "0x0568fe2b94b7f4e5a97354830c4f8eaa75ad241b2234a421a66270e9d4957a4e",
+  "0x34797c241b3588396b587b07559a267193b4b1d4f54d45e2d28e6e4d05285f8f",
+  "0x44c5c5dd548bfb62296e56c4746e266e05fc84803398669ac37ce16258229dd6",
+  "0x753931225f405146b8ccaae118d943a775a33e73a8b86a3ee423a342f3388920",
+  "0xfcb0c90bbd4b602573a29f16ce99918414399cb416c62fcdcc4d96bf99a38cfb",
+  "0xd8d7a6a18550a35d8884a2d6f8949af694eaa62e1a7c5b1854c0b8c968a6f37f"
+ ],
+ "explorer": "https://explorer.testnet.arc.io/address/0x9351a7332944a24e1e179cf7a891a89d67c217bd",
+ "txLabels": [
+  "registerService #0",
+  "fund agent 1 tUSDC",
+  "call 0 approve-pay",
+  "call 1 EIP-3009 gasless pay",
+  "call 2 bad-token pay",
+  "fulfill 0",
+  "fulfill 1",
+  "reject 2 (refund)",
+  "call 3 pay (left to expire)",
+  "refundExpired 3"
+ ]
+}

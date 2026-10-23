@@ -27,9 +27,23 @@ Optional later: a Cloudflare cron Worker with the ops key as a Worker secret (ne
 5. `pay.mjs` with a bad token → rejected → refund
 6. One call from the app UI with Muhammad's MetaMask (or the agent) → fulfilled. **This is "through your contract and app".**
 
+## Live (2026-10-24)
+- App: https://paypercall.madebydevx.com (Studio's app on the existing Cloudflare Worker; defaults to Arc Mainnet; Recent Calls shows call #0)
+- Contract: https://explorer.arc.io/address/0x21b9fad1c5eac36c687479d6bc8c8b088cbae9d1
+- Paid call #0, escrow: https://explorer.arc.io/tx/0x733de8b23a826f4a759e540c5052d82451d879c4d897b6aa7fc1cd1372ab705d
+- Paid call #0, settle (0.009 / 0.001 split): https://explorer.arc.io/tx/0x6b2b1aa5f77ba1d0aa6ee89bba5d2d40379900832896285c86be6bbacdf79bfc
+- Studio project: https://studio.arc.io/app/e0f3376e-8287-4dba-bda9-9f13ef987c29
+- Repo: https://github.com/devx-agent/devx-paypercall
+Mainnet txs done: steps 1 and 3 above, plus a 0.02 USDC fund_agent. Steps 4–5 (gasless pay, reject refund) plus a refundExpired ran on Arc testnet and a mainnet fork, not on mainnet (no extra spend approved). Step 6 is optional and needs approval.
+Testnet record: contracts/deployments/testnet.json.
+
 ## Video (~3 min, Muhammad records on his laptop: Loom, or QuickTime/OBS → YouTube unlisted)
 0:00 Problem: agents pay APIs with no recourse; PayPerCall = escrow + verdict hash + split/refund.
-0:25 Arc Studio workspace: scroll the chat (spec → contracts → tests passing → audit → testnet deploy → app). Show the file tree + test output.
-1:20 Live app on mainnet: connect, pay 0.01 USDC for a token, status flips to Fulfilled in seconds, verdict + "hash matches".
-2:10 explorer.arc.io: the contract, the requestCall tx (USDC in), the fulfill tx (USDC split out), and the refund tx.
-2:40 What's next: any API can list itself; ERC-8004 reputation; repo + links.
+0:25 Arc Studio workspace (https://studio.arc.io/app/e0f3376e-8287-4dba-bda9-9f13ef987c29): scroll the chat (spec → contract → tests passing →
+     audit with 5 fixes → testnet deploy → app). Show the file tree and the test output.
+1:20 Live app https://paypercall.madebydevx.com: service card (DevX Token Check, $0.01, 10% referrer), then Recent Calls with call #0 →
+     click its tx link. (If a wallet with a little Arc USDC is available, do a live "Pay 0.01 USDC & check": status flips to Fulfilled, the verdict
+     shows "hash matches onchain". This needs separate approval because it spends.)
+2:10 explorer.arc.io: the contract (0x21b9…e9d1), the requestCall tx 0x733de8b2… (0.01 USDC in), the fulfill tx 0x6b2b1aa5… (0.009 to the provider,
+     0.001 to the referrer). Show the refund txs on explorer.testnet.arc.io (reject 0x75393122…, refundExpired 0xd8d7a6a1…), and show receipts/mainnet/call-0.json, whose keccak256 equals the onchain resultHash.
+2:40 What's next: any API can list itself; ERC-8004 reputation; repo https://github.com/devx-agent/devx-paypercall.

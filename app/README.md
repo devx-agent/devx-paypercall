@@ -73,7 +73,7 @@ Built with [Arc Studio](https://studio.arc.io)
 | USDC (testnet) | `0x3600000000000000000000000000000000000000` |
 | Operator (fulfiller bot) | `0xbDdd5BB708D9368ce3373d083aA1e7D2c5D14d57` |
 | REFERRER (DevX treasury) | `0xe30c4544eC57ac44d8586eB49e49e267fc2d40DB` |
-| Service #0 | Not registered on testnet (no testnet USDC for gas); live on mainnet below |
+| Service #0 | DevX Token Check, registered 2026-10-24 (tx `0x0eb958eb26e06c2aa38ed5fe94a189ad5d793d7639983b13f7da98b44f1cc170`) |
 
 ---
 

@@ -18,6 +18,7 @@ contracts/broadcast/
 contracts/deployments/fork.json
 receipts/*
 !receipts/mainnet/
+!receipts/testnet/
 studio/out/
 studio/workspace/
 dist/
