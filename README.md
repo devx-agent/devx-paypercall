@@ -1,5 +1,7 @@
 # DevX PayPerCall
 
+**Demo video:** [paypercall_demo.mp4](https://github.com/devx-agent/devx-paypercall/releases/download/v1.0-demo/paypercall_demo.mp4) (Arc mainnet demo, [release v1.0-demo](https://github.com/devx-agent/devx-paypercall/releases/tag/v1.0-demo))
+
 **Escrowed USDC pay-per-call for AI agents on [Arc](https://arc.io).** Pay $0.01, get a verified answer or an automatic refund.
 
 **Live app:** https://paypercall.madebydevx.com · **Arc Studio project:** https://studio.arc.io/app/e0f3376e-8287-4dba-bda9-9f13ef987c29 · Service #0: [DevX Token Check](https://tokencheck.madebydevx.com)
